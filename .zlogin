@@ -1,0 +1,1 @@
+# Use .zshrc for configuration!

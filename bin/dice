@@ -1,0 +1,40 @@
+#!/usr/bin/ruby
+
+module DICE
+  SSH = 'ssh -t s1628873@ssh.inf.ed.ac.uk '
+
+  class << self
+    def start argv
+      if argv.empty?
+        default
+      elsif argv.size == 1
+        if %w[--compute -c].include? argv.first
+          compute
+        else
+          help
+        end
+      else
+        help
+      end
+    end
+
+    private
+
+    def default
+      exec SSH + 'ssh student.login'
+    end
+
+    def compute
+      exec SSH + 'ssh ashbury'
+    end
+
+    def help
+      puts
+      puts 'Commands:'
+      puts '  dice                   # SSH into DICE account'
+      puts '  dice --compute, -c     # SSH into student.compute (ashbury)'
+    end
+  end
+end
+
+DICE.start ARGV

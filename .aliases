@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Git aliases
+alias g=git
+alias ga='git add'
+alias gb='git branch'
+alias gcl='git clone'
+alias gch='git checkout'
+alias gd='git diff'
+alias gst='git status'
+alias gm='git merge'
+alias gr='git remote'
+alias grv='git remote -v'
+alias gra='git remote add'
+alias grrm='git remote rm'
+alias gp='git push'
+alias gpu='git push upstream'
+alias gpo='git push origin'
+alias gpl='git pull'
+alias gplu='git pull upstream'
+alias gf='git fetch'
+alias gfu='git fetch upstream'
+alias gcm='git commit -m'
+alias gcam='git commit --amend -m'
+alias gl="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias grb='git rebase'
+alias gre='git reset'
+
+function glf() { git log --all --grep="$1"; }
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Applications
+alias db='open -a "DB Browser for SQLite.app"'
+alias typora='open -a Typora'
