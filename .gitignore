@@ -25,6 +25,7 @@
 !.gemrc
 !.rbenv/
 .rbenv/versions/
+.rbenv/shims/
 !.railsrc
 
 # Scripts
