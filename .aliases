@@ -26,8 +26,6 @@ alias gl="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cr
 alias grb='git rebase'
 alias gre='git reset'
 
-function glf() { git log --all --grep="$1"; }
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 

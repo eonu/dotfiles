@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.exports should contain environment variable exports.
 # * ~/.aliases should contain any personal aliases.
-for file in ~/.{path,exports,aliases}; do
+for file in ~/.{path,exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
