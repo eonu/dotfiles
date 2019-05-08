@@ -1,1 +1,1 @@
-.zlogin
+# Use .zshrc for configuration!

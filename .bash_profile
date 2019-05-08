@@ -1,1 +1,1 @@
-.bash_profile
+# Use .zshrc for configuration!

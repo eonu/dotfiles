@@ -1,1 +1,1 @@
-.profile
+# Use .zshrc for configuration!
