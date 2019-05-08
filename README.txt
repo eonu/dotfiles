@@ -1,0 +1,1 @@
+PERSONAL NOTE: Files are hard linked to ~, directories are copied from ~.
