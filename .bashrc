@@ -1,1 +1,1 @@
-# Use .zshrc for configuration!
+.bashrc

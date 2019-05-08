@@ -1,9 +1,1 @@
-[user]
-	name = Edwin Onuonga
-	email = edwinonuonga@gmail.com
-[core]
-	editor = emacs
-[credential]
-	helper = osxkeychain
-[http]
-	postBuffer = 524288000
+.gitconfig
