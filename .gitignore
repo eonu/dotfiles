@@ -30,4 +30,4 @@
 !.railsrc
 
 # Scripts
-!bin/
+!.bin/
