@@ -1,33 +1,3 @@
-/*
-
-!.gitignore
-!README.txt
-
-# Profile
-!.zshrc
-!.zlogin
-!.zprofile
-!.profile
-!.bashrc
-!.bash_profile
-
-# Shell files
-!.path
-!.exports
-!.aliases
-
-# Git
-!.gitconfig
-
-# Editor configuration
-!.emacs
-
 # Ruby
-!.gemrc
-!.rbenv/
 .rbenv/versions/
 .rbenv/shims/
-!.railsrc
-
-# Scripts
-!.bin/
