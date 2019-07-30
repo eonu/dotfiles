@@ -6,5 +6,5 @@ export PATH="/Users/edwinonuonga/miniconda3/bin:$PATH"
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
+# Add `~/.bin` to the `$PATH`
+export PATH="$HOME/.bin:$PATH"
