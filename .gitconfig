@@ -13,7 +13,7 @@
 	b = branch
 	c = commit
 	cm = commit -m
-	cmg = commit --amend --no-edit
+	cane = commit --amend --no-edit
 	cam = commit --amend -m
 	cl = clone
 	ch = checkout
