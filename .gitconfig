@@ -8,25 +8,3 @@
 	helper = osxkeychain
 [http]
 	postBuffer = 524288000
-[alias]
-	a = add
-	b = branch
-	c = commit
-	cm = commit -m
-	cane = commit --amend --no-edit
-	cam = commit --amend -m
-	cl = clone
-	ch = checkout
-	d = diff
-	m = merge
-	r = remote
-	rv = remote -v
-	ra = remote add
-	rrm = remote rm
-	p = push
-	pl = pull
-	f = fetch
-	l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	rb = rebase
-	re = reset
-	st = status
