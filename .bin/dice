@@ -1,15 +1,26 @@
 #!/usr/bin/ruby
 
 module DICE
-  SSH = 'ssh -t s1628873@ssh.inf.ed.ac.uk '
+  TARGET = 's1628873@ssh.inf.ed.ac.uk'
+  SSH = "ssh -t #{TARGET}"
 
   class << self
     def start argv
       if argv.empty?
-        default
+        exec SSH + ' ssh student.login'
       elsif argv.size == 1
         if %w[--compute -c].include? argv.first
-          compute
+          exec SSH + ' ssh ashbury'
+        elsif %w[--cluster -C].include? argv.first
+          exec SSH + ' ssh hadoop.exc'
+        elsif %w[--path -p].include? argv.first
+          puts TARGET
+        else
+          help
+        end
+      elsif argv.size == 2
+        if %w[--path -p].include? argv.first
+          puts TARGET + ':' + argv[1]
         else
           help
         end
@@ -20,19 +31,13 @@ module DICE
 
     private
 
-    def default
-      exec SSH + 'ssh student.login'
-    end
-
-    def compute
-      exec SSH + 'ssh ashbury'
-    end
-
     def help
       puts
       puts 'Commands:'
-      puts '  dice                   # SSH into DICE account'
+      puts '  dice                   # SSH into DICE'
       puts '  dice --compute, -c     # SSH into student.compute (ashbury)'
+      puts '  dice --cluster, -C     # SSH into hadoop.exc (scutter)'
+      puts '  dice --path, -p PATH   # Path on DICE account, with SSH target'
     end
   end
 end
