@@ -13,6 +13,8 @@ module DICE
           exec SSH + ' ssh ashbury'
         elsif %w[--cluster -C].include? argv.first
           exec SSH + ' ssh hadoop.exc'
+        elsif %w[--gpu -g].include? argv.first
+          exec SSH + ' ssh atlas'
         elsif %w[--path -p].include? argv.first
           puts TARGET
         else
@@ -37,6 +39,7 @@ module DICE
       puts '  dice                   # SSH into DICE'
       puts '  dice --compute, -c     # SSH into student.compute (ashbury)'
       puts '  dice --cluster, -C     # SSH into hadoop.exc (scutter)'
+      puts '  dice --gpu, -g         # SSH into GPU (atlas)'
       puts '  dice --path, -p PATH   # Path on DICE account, with SSH target'
     end
   end

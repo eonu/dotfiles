@@ -24,3 +24,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Enables shell command completion for gcloud.
+if [ -f '/Users/edwinonuonga/Development/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/edwinonuonga/Development/google-cloud-sdk/completion.zsh.inc'; fi
