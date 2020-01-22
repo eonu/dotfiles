@@ -34,3 +34,13 @@ alias path='echo -e ${PATH//:/\\n}'
 alias db='open -a "DB Browser for SQLite.app"'
 alias typora='open -a Typora'
 alias firefox='open -a Firefox'
+
+# Execute Jupyter notebooks
+#
+# Usage:
+#   nbx notebook.ipynb
+#     Writes the notebook output to a new notebook.
+#
+#   nbx --inplace notebook.ipynb
+#     Adds the output cells to the notebook inplace.
+alias nbx='jupyter nbconvert --execute --to notebook'
