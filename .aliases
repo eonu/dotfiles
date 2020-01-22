@@ -43,4 +43,4 @@ alias firefox='open -a Firefox'
 #
 #   nbx --inplace notebook.ipynb
 #     Adds the output cells to the notebook inplace.
-alias nbx='jupyter nbconvert --execute --to notebook'
+# alias nbx='jupyter nbconvert --execute --to notebook'
