@@ -3,7 +3,7 @@
 require 'fileutils'
 
 class Note
-  DIRECTORY = '/Users/edwinonuonga/dropbox/university/year4/sem1'
+  DIRECTORY = '/Users/edwinonuonga/dropbox/university/year4/sem2'
   LATEX = '/Users/edwinonuonga/development/latex/mytex/mytex.tex'
 
   @args = []
