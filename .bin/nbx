@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+module NBX
+  # Execute long-running Jupyter notebooks from the command-line
+
+  class << self
+    def start argv
+      if argv.empty?
+        help
+      elsif argv.size == 1
+        run argv.first.inspect
+      elsif argv.size == 2
+        if %w[--inplace -i].include? argv.first
+          run "--inplace #{argv.last.inspect}"
+        else
+          run "#{argv.first.inspect} --output #{argv.last.inspect}"
+        end
+      else
+        help
+      end
+    end
+
+    def run options
+      exec "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --execute --to notebook #{options}"
+    end
+
+    def help
+      puts
+      puts 'Execute long-running Jupyter notebooks from the command-line'
+      puts
+      puts "\e[1mUsage\e[0m:"
+      puts '  nbx nb.ipynb            # Run nb.ipynb and store output in nb.nbconvert.ipynb'
+      puts '  nbx -i nb.ipynb         # Run nb.ipynb and write output cells inplace'
+      puts '  nbx nb.ipynb out.ipynb  # Run nb.ipynb and store output in out.ipynb'
+    end
+  end
+end
+
+NBX.start ARGV
