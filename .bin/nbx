@@ -1,39 +1,65 @@
 #!/usr/bin/env ruby
 
-module NBX
+class NBX
   # Execute long-running Jupyter notebooks from the command-line
 
-  class << self
-    def start argv
-      if argv.empty?
-        help
-      elsif argv.size == 1
-        run argv.first.inspect
-      elsif argv.size == 2
-        if %w[--inplace -i].include? argv.first
-          run "--inplace #{argv.last.inspect}"
-        else
-          run "#{argv.first.inspect} --output #{argv.last.inspect}"
-        end
-      else
-        help
-      end
-    end
+  def initialize
+    @allow_errors = true
+    @inplace = false
+  end
 
-    def run options
-      exec "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --execute --to notebook #{options}"
+  def start(args)
+    args = parse_options args
+    if args.empty?
+      help
+    elsif args.size == 1
+      run args.first.inspect
+    elsif args.size == 2
+      input, output = args.map &:inspect
+      help if @inplace
+      run "#{input} --output #{output}"
+    else
+      help
     end
+  end
 
-    def help
-      puts
-      puts 'Execute long-running Jupyter notebooks from the command-line'
-      puts
-      puts "\e[1mUsage\e[0m:"
-      puts '  nbx nb.ipynb            # Run nb.ipynb and store output in nb.nbconvert.ipynb'
-      puts '  nbx -i nb.ipynb         # Run nb.ipynb and write output cells inplace'
-      puts '  nbx nb.ipynb out.ipynb  # Run nb.ipynb and store output in out.ipynb'
+  def run(args)
+    cmd = "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --execute --to notebook #{args}"
+    cmd << ' --allow-errors' if @allow_errors
+    cmd << ' --inplace' if @inplace
+    exec cmd
+  end
+
+  def parse_options(args)
+    if args.include? '-i'
+      @inplace = true
+      args.delete '-i'
     end
+    if args.include? '-!'
+      @allow_errors = false
+      args.delete '-!'
+    end
+    if args.include?('-i!') or args.include?('-!i')
+      @inplace, @allow_errors = true, false
+      ['-i!', '-!i'].each {|opt| args.delete opt}
+    end
+    args
+  end
+
+  def help
+    puts
+    puts "\e[4mnbx\e[0m: Execute long-running Jupyter notebooks from the command-line"
+    puts
+    puts "\e[1mUsage\e[0m:"
+    puts "  nbx nb.ipynb            \e[90m# Run nb.ipynb and store output in nb.nbconvert.ipynb\e[0m"
+    puts "  nbx -i nb.ipynb         \e[90m# Run nb.ipynb and write output cells inplace\e[0m"
+    puts "  nbx nb.ipynb out.ipynb  \e[90m# Run nb.ipynb and store output in out.ipynb\e[0m"
+    puts
+    puts "\e[1mNote\e[0m: \e[37mThe -! flag can be used to disallow errors during execution.\e[0m"
+    puts
+    exit 0
   end
 end
 
-NBX.start ARGV
+nbx = NBX.new
+nbx.start ARGV
