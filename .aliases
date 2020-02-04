@@ -23,6 +23,9 @@ alias gl="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cr
 alias grb='git rebase'
 alias gre='git reset'
 alias gst='git status'
+alias gchunt='git clean -nXd'
+alias grunt='git clean -fXd'
+alias grig='git rm -r --cached'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
