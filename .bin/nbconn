@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+class NBConn
+  def start(args)
+    if args.empty?
+      help
+    elsif args.size == 3
+      validate_port args[1]
+      validate_port args[2]
+      run args
+    else
+      help
+    end
+  end
+
+  def run(args)
+    exec "ssh -N -o ProxyCommand='ssh -q s1628873@student.ssh.inf.ed.ac.uk nc #{args[0]} 22' -L #{args[1]}:localhost:#{args[2]} s1628873@{#{args[0]}"
+  end
+
+  def help
+    puts
+    puts "\e[4mnbconn\e[0m: Connect to a Jupyter notebook running on DICE with SSH"
+    puts
+    puts "\e[1mUsage\e[0m:"
+    puts "  nbconn [MACHINE-NAME] [LOCAL-PORT] [REMOTE-PORT]"
+    puts
+    exit 0
+  end
+
+  def validate_port(port)
+    raise TypeError.new('Expected port to be an integer') unless /\A[-+]?\d+\z/ =~ port
+    raise ArgumentError.new('Expected port to be between 0-65535') unless (0..65535).include? port.to_i
+  end
+end
+
+nbconn = NBConn.new
+nbconn.start ARGV
