@@ -7,14 +7,12 @@ module DICE
   class << self
     def start argv
       if argv.empty?
-        exec SSH + ' ssh student.login'
+        exec "#{SSH} ssh student.login"
       elsif argv.size == 1
         if %w[--compute -c].include? argv.first
-          exec SSH + ' ssh ashbury'
-        elsif %w[--cluster -C].include? argv.first
-          exec SSH + ' ssh hadoop.exc'
+          exec "#{SSH} ssh ashbury"
         elsif %w[--gpu -g].include? argv.first
-          exec SSH + ' ssh atlas'
+          exec "#{SSH} ssh atlas"
         elsif %w[--path -p].include? argv.first
           puts TARGET
         else
@@ -22,7 +20,9 @@ module DICE
         end
       elsif argv.size == 2
         if %w[--path -p].include? argv.first
-          puts TARGET + ':' + argv[1]
+          puts "#{TARGET}:#{argv[1]}"
+        elsif %w[--machine -m].include? argv.first
+          exec "#{SSH} ssh #{argv[1]}"
         else
           help
         end
@@ -35,12 +35,14 @@ module DICE
 
     def help
       puts
-      puts 'Commands:'
-      puts '  dice                   # SSH into DICE'
-      puts '  dice --compute, -c     # SSH into student.compute (ashbury)'
-      puts '  dice --cluster, -C     # SSH into hadoop.exc (scutter)'
-      puts '  dice --gpu, -g         # SSH into GPU (atlas)'
-      puts '  dice --path, -p PATH   # Path on DICE account, with SSH target'
+      puts "\e[4mdice\e[0m: Shortcut commands for connecting to DICE"
+      puts
+      puts "\e[1mCommands\e[0m:"
+      puts "  dice                           \e[37m#\e[0m \e[90mSSH into DICE\e[0m"
+      puts "  dice --compute, -c             \e[37m#\e[0m \e[90mSSH into student.compute (ashbury)\e[0m"
+      puts "  dice --gpu, -g                 \e[37m#\e[0m \e[90mSSH into GPU (atlas)\e[0m"
+      puts "  dice --machine, -m [MACHINE]   \e[37m#\e[0m \e[90mSSH into a specific DICE machine\e[0m"
+      puts "  dice --path, -p [PATH]         \e[37m#\e[0m \e[90mPath on DICE account, with SSH target\e[0m"
     end
   end
 end
