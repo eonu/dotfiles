@@ -40,7 +40,7 @@ module DICE
       puts "\e[1mCommands\e[0m:"
       puts "  dice                           \e[37m#\e[0m \e[90mSSH into DICE\e[0m"
       puts "  dice --compute, -c             \e[37m#\e[0m \e[90mSSH into student.compute (ashbury)\e[0m"
-      puts "  dice --gpu, -g                 \e[37m#\e[0m \e[90mSSH into GPU (atlas)\e[0m"
+      puts "  dice --gpu, -g                 \e[37m#\e[0m \e[90mSSH into GPU (waititi)\e[0m"
       puts "  dice --machine, -m [MACHINE]   \e[37m#\e[0m \e[90mSSH into a specific DICE machine\e[0m"
       puts "  dice --path, -p [PATH]         \e[37m#\e[0m \e[90mPath on DICE account, with SSH target\e[0m"
     end
