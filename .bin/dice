@@ -12,7 +12,7 @@ module DICE
         if %w[--compute -c].include? argv.first
           exec "#{SSH} ssh ashbury"
         elsif %w[--gpu -g].include? argv.first
-          exec "#{SSH} ssh atlas"
+          exec "#{SSH} ssh waititi"
         elsif %w[--path -p].include? argv.first
           puts TARGET
         else
