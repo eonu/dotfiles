@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+module Release
+  class << self
+    def start(argv)
+      if argv.size == 2
+        pkg, version = argv
+        if File.file? 'setup.py'
+          # Python
+          system 'python3 setup.py sdist bdist_wheel'
+          system "twine upload dist/#{pkg}-#{version}.tar.gz"
+        elsif Dir.glob('*.gemspec').any?
+          # Ruby
+          system 'bundle exec rake install'
+          system "gem push pkg/#{pkg}-#{version}.gem"
+        else
+          help
+        end
+      else
+        help
+      end
+    end
+
+    private
+
+    def help
+      puts
+      puts "\e[4mrelease\e[0m: Utility for releasing Ruby gems and Python packages"
+      puts
+      puts "\e[1mUsage\e[0m:"
+      puts "  release [PACKAGE-NAME] [VERSION]\t\e[37me.g.\e[0m \e[90mrelease arx 1.0.0\e[0m"
+    end
+  end
+end
+
+Release.start ARGV
