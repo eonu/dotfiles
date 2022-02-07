@@ -13,5 +13,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 # Add `~/.bin` to PATH
 export PATH="$HOME/.bin:$PATH"
 
-# Updates PATH for Google Cloud SDK.
-# if [ -f '/Users/edwinonuonga/Development/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/edwinonuonga/Development/google-cloud-sdk/path.zsh.inc'; fi
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
