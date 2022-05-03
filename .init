@@ -11,7 +11,7 @@ eval "$(rbenv init -)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads NVM bash completion
 
 # >>> conda initialize >>>
-# Managed by 'conda init'
+# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/edwinonuonga/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
