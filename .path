@@ -6,8 +6,8 @@ export PATH="/Users/edwinonuonga/miniconda3/bin:$PATH"
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-# Add `~/.bin` to PATH
-export PATH="$HOME/.bin:$PATH"
+# Add `~/bin` to PATH
+export PATH="$HOME/bin:$PATH"
 
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
