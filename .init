@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# travis
-[ -f /Users/edwinonuonga/.travis/travis.sh ] && source /Users/edwinonuonga/.travis/travis.sh
-
 # rbenv
 eval "$(rbenv init -)"
 
