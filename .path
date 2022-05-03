@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Prepend Python 3.5 to PATH
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
-
 # miniconda3
 export PATH="/Users/edwinonuonga/miniconda3/bin:$PATH"
 

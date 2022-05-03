@@ -34,5 +34,4 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Applications
-alias db='open -a "DB Browser for SQLite.app"'
 alias firefox='open -a Firefox'
