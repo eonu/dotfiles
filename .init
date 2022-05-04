@@ -3,15 +3,15 @@
 # rbenv
 eval "$(rbenv init -)"
 
-# nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads NVM bash completion
-
 # heroku
 eval $(heroku autocomplete:script zsh)
 
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads NVM bash completion
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
