@@ -3,6 +3,7 @@
 export LANG='en_US.UTF-8'
 export VISUAL='nano'
 export EDITOR='emacs'
+export SHELL='/bin/zsh'
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
