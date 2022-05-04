@@ -10,6 +10,9 @@ eval "$(rbenv init -)"
 # heroku
 eval $(heroku autocomplete:script zsh)
 
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/edwinonuonga/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
