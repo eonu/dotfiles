@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # rbenv
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 # heroku
 eval $(heroku autocomplete:script zsh)
