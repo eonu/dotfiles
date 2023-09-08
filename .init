@@ -3,9 +3,6 @@
 # rbenv
 eval "$(rbenv init - zsh)"
 
-# heroku
-eval $(heroku autocomplete:script zsh)
-
 # brew
 eval "$(brew shellenv)"
 
@@ -13,17 +10,8 @@ eval "$(brew shellenv)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads NVM bash completion
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/edwinonuonga/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/edwinonuonga/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/edwinonuonga/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/edwinonuonga/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# display dircolors (ls, tree, etc.)
+eval "$(gdircolors -b ~/.dir_colors)"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

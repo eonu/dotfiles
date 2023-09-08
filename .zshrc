@@ -66,7 +66,7 @@ source $ZSH/oh-my-zsh.sh
 # * ~/.aliases should contain any personal aliases.
 # * ~/.functions should contain custom bash functions.
 # * ~/.init should contain initialization scripts
-for file in ~/.{path,exports,aliases,functions,init}; do
+for file in ~/.{exports,aliases,path,functions,init}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

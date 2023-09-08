@@ -37,4 +37,10 @@ alias path='echo -e ${PATH//:/\\n}'
 alias firefox='open -a Firefox'
 
 # Use bat instead of cat
-alias cat='bat --paging=never'
+alias cat='bat --theme Nord --paging never -p'
+
+# x86
+alias brew-x86='arch -x86_64 /usr/local/bin/brew'
+
+# Colorized ls
+alias ls='gls --color'
