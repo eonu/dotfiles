@@ -8,3 +8,6 @@ function glf() { git log --all --grep="$1"; }
 
 # Add gitkeep files to the deepest empty subdirectories in the specified directory
 function gitkeep() { find ${1:-.} -type d -empty -not -path "${1:-.}/.git/*" -exec touch {}/.gitkeep \; }
+
+# Activate virtual environment
+function activate() { source $HOME/env/"$1"/bin/activate }
