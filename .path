@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
 
-# Prepend Python 3.5 to PATH
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
+# Homebrew and installed binaries
+export PATH="/opt/homebrew/bin:$PATH"
 
-# miniconda3
-export PATH="/Users/edwinonuonga/miniconda3/bin:$PATH"
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Add `~/.bin` to PATH
-export PATH="$HOME/.bin:$PATH"
-
-# Add Visual Studio Code (code)
+# Visual Studio Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Personal scripts
+export PATH="$HOME/bin:$PATH"

@@ -3,12 +3,12 @@
 export LANG='en_US.UTF-8'
 export VISUAL='nano'
 export EDITOR='emacs'
+export SHELL='/bin/zsh'
+export LS_COLORS="$(/opt/homebrew/bin/vivid -m 8-bit generate nord)"
+export DOCKER_DEFAULT_PLATFORM="linux/amd64"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-
-# Add GHC 7.10.3 to the PATH, via https://ghcformacosx.github.io/
-export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
-if [ -d "$GHC_DOT_APP" ]; then
-  export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
+# fzf nord theme
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+--color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
+'

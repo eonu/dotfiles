@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/edwinonuonga/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -50,7 +50,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git-noalias)
+# plugins=(git-noalias)
 autoload -Uz zmv
 
 source $ZSH/oh-my-zsh.sh
@@ -66,7 +66,7 @@ source $ZSH/oh-my-zsh.sh
 # * ~/.aliases should contain any personal aliases.
 # * ~/.functions should contain custom bash functions.
 # * ~/.init should contain initialization scripts
-for file in ~/.{path,exports,aliases,functions,init}; do
+for file in ~/.{exports,aliases,path,functions,init}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

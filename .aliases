@@ -34,5 +34,13 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Applications
-alias db='open -a "DB Browser for SQLite.app"'
-alias firefox='open -a Firefox'
+alias chrome='open -a "Google Chrome"'
+
+# Use bat instead of cat
+alias cat='/opt/homebrew/bin/bat --theme Nord --paging never -p'
+
+# Colorized ls
+alias ls='/opt/homebrew/bin/gls --color'
+
+# Moving many files, e.g. mmv *.ipynb folder/*.ipynb
+alias mmv='noglob zmv -W'
