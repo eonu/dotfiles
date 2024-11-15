@@ -91,7 +91,8 @@ task :ssh do
     if File.directory? "#{Dir.home}/.ssh"
         warning ".ssh directory already exists."
     else
-        shell "mkdir -p ~/.ssh/authorized_keys"
+        shell "mkdir ~/.ssh"
+        shell "touch ~/.ssh/authorized_keys"
         shell "touch ~/.ssh/config"
         shell "chmod 700 ~/.ssh"
         shell "chmod 644 ~/.ssh/authorized_keys"
