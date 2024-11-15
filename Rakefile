@@ -17,10 +17,10 @@ end
 
 task :ohmyzsh do
     title "Installing oh-my-zsh..."
-    if `test -d ~/.oh-my-zsh && echo 1`.empty?
-        shell 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-    else
+    if File.directory? "#{Dir.home}/.oh-my-zsh"
         warning "Oh My Zsh is already installed."
+    else
+        shell 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
     end
     puts
 end
@@ -69,12 +69,12 @@ end
 namespace :vscode do
     task :vscode do
         title "Installing VS Code..."
-        if !File.file? "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+        if File.file? "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+            warning 'VS Code is already installed.'
+        else
             shell 'curl -sSL "https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal" -o vscode.zip'
             shell 'unzip vscode.zip -d /Applications'
             shell 'rm vscode.zip'
-        else
-            warning 'VS Code is already installed.'
         end
         puts
     end
@@ -88,15 +88,15 @@ end
 
 task :ssh do
     title "Setting up SSH directory and creating key pair..."
-    if !File.directory? "#{Dir.home}/.ssh"
+    if File.directory? "#{Dir.home}/.ssh"
+        warning ".ssh directory already exists."
+    else
         shell "mkdir -p ~/.ssh/authorized_keys"
         shell "touch ~/.ssh/config"
         shell "chmod 700 ~/.ssh"
         shell "chmod 644 ~/.ssh/authorized_keys"
         shell "chmod 600 ~/.ssh/config"
         shell "ssh-keygen -t rsa -f ~/.ssh/id_rsa"
-    else
-        warning ".ssh directory already exists."
     end
     puts
 end
