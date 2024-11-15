@@ -17,10 +17,10 @@ end
 
 task :ohmyzsh do
     title "Installing oh-my-zsh..."
-    if `test -d .oh-my-zsh && echo 1`.empty?
+    if `test -d ~/.oh-my-zsh && echo 1`.empty?
         shell 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
     else
-        puts "\tOh My Zsh is already installed."
+        warning "Oh My Zsh is already installed."
     end
     puts
 end
@@ -37,10 +37,10 @@ end
 
 task :dotfiles do
     title "Cloning dotfiles..."
-    if (Dir.entries(".") & DOTFILES).empty?
+    if (Dir.entries(Dir.home) & DOTFILES).empty?
         shell 'git clone https://github.com/eonu/dotfiles.git'
         DOTFILES.each do |file|
-            shell "mv dotfiles/#{file} #{file}"
+            shell "mv dotfiles/#{file} ~/#{file}"
         end
         shell 'rm -rf dotfiles'
     else
@@ -87,18 +87,23 @@ namespace :vscode do
 end
 
 task :ssh do
-    title "Setting up SSH key pair..."
-    if !File.file? ".ssh/id_rsa"
-        shell "ssh-keygen -t rsa -f .ssh/id_rsa"
+    title "Setting up SSH directory and creating key pair..."
+    if !File.directory? "#{Dir.home}/.ssh"
+        shell "mkdir -p ~/.ssh/authorized_keys"
+        shell "touch ~/.ssh/config"
+        shell "chmod 700 ~/.ssh"
+        shell "chmod 644 ~/.ssh/authorized_keys"
+        shell "chmod 600 ~/.ssh/config"
+        shell "ssh-keygen -t rsa -f ~/.ssh/id_rsa"
     else
-        warning ".ssh/id_rsa already exists."
+        warning ".ssh directory already exists."
     end
     puts
 end
 
 task :clear do
-    title "Removing leftovers..."
-    shell "rm README.md Rakefile"
+    title "Removing Rakefile..."
+    shell "rm Rakefile"
     puts
     puts "\e[1;92mInstallation finished :)\e[0m"
 end
