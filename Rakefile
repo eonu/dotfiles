@@ -52,10 +52,10 @@ end
 namespace :brew do 
     task :brew do
         title "Installing Homebrew..."
-        if `which /opt/homebrew/bin/brew`.empty?
-            shell '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-        else
+        if File.file? "/opt/homebrew/bin/brew"
             warning "Homebrew is already installed."
+        else
+            shell '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
         end
         puts
     end
