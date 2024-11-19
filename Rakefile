@@ -28,7 +28,7 @@ end
 task :git do
     title "Installing Git..."
     if `which git`.empty?
-        shell '/opt/homebrew/bin/brew git'
+        shell '/opt/homebrew/bin/brew install git'
     else
         warning "Git is already installed."
     end
