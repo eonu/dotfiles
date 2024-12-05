@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+class QL
+  # Preview files in macOS Quick Look
+
+  def initialize
+    @background = false
+  end
+
+  def start(args)
+    args = parse_options args
+    if args.empty?
+      help
+    elsif args.size > 0
+      run args.map(&:inspect)
+    end
+  end
+
+  def run(args)
+    cmd = 'qlmanage -p'
+    cmd << " #{args.join ' '}"
+    cmd << ' > /dev/null 2>&1'
+    cmd << ' &' if @background
+    system cmd
+  end
+
+  def parse_options(args)
+    if args.include? '-b'
+      @background = true
+      args.delete '-b'
+    end
+    args
+  end
+
+  def help
+    puts
+    puts "\e[4mql\e[0m: Preview files in macOS Quick Look"
+    puts
+    puts "\e[1mUsage\e[0m:"
+    puts "  ql [FILES]     \e[90m# Run Quick Look in the foreground\e[0m"
+    puts "  ql -b [FILES]  \e[90m# Run Quick Look in the background\e[0m"
+    puts
+    exit 0
+  end
+end
+
+ql = QL.new
+ql.start ARGV

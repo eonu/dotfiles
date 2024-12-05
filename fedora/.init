@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# fzf completion
+eval "$(/usr/bin/fzf --zsh)"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Personal scripts
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
