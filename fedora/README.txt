@@ -31,3 +31,12 @@ rm gnome-terminal
 # install Nord and IntelliJ IDEA Light VSCode themes
 code --install-extension arcticicestudio.nord-visual-studio-code
 code --install-extension AlexTi.intellij-idea-light-theme
+
+# set up SSH key
+mkdir ~/.ssh
+touch ~/.ssh/authorized_keys
+touch ~/.ssh/config
+chmod 700 ~/.ssh
+chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/config
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
