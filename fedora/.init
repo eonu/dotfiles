@@ -2,3 +2,6 @@
 
 # fzf completion
 eval "$(/usr/bin/fzf --zsh)"
+
+# fix bracketed paste issue in terminal
+printf "\e[?2004l" 
